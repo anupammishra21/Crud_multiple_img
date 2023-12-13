@@ -1,0 +1,72 @@
+<%- include('../layouts/header') %>
+
+    <div class="container cssCal" >
+        <div class="heading">update Profile Page</div>
+         <form method="post" action="/update" enctype="multipart/form-data">           
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<%= data.name %>" >
+                <input type="hidden" id="id" name="id" value="<%= data._id %>" >
+            </div>
+            <div class="form-group">
+                <label>Gender</label><br>
+                <% if(data.gender == 'male') { %>
+                <label><input type="radio" name="gender" value="male" checked> Male</label><br>
+                <label><input type="radio" name="gender" value="female"> Female</label><br> 
+                <% } else { %>
+                <label><input type="radio" name="gender" value="male"> Male</label><br>
+                <label><input type="radio" name="gender" value="female" checked> Female</label><br> 
+                <% } %>               
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" value="<%= data.email %>">
+            </div> 
+            <div class="form-group">
+                <label>Address</label>
+                <textarea class="form-control" id="address" rows="3" placeholder="Enter Your Address" name="address"><%= data.address %></textarea>
+            </div>           
+            <div class="form-group">
+                <label>Interest/Hobby</label> <br>
+                
+                <label><input type="checkbox" name="hobby" value="sports" <%= data.hobby.includes('sports')? 'checked':'' %> > Sports</label><br>                                  
+                <label><input type="checkbox" name="hobby" value="music" <%= data.hobby.includes('music')? 'checked':'' %> > Music</label><br>                                
+                <label><input type="checkbox" name="hobby" value="travel" <%= data.hobby.includes('travel')? 'checked':'' %> > Travel</label><br>                              
+                <label><input type="checkbox" name="hobby" value="sleep" <%= data.hobby.includes('sleep')? 'checked':'' %> > Sleep</label>
+               
+            </div>
+            <div class="form-group">
+                <label>Citizen</label>
+                <select class="form-control" id="citizen" name="citizen">
+                <% if(data.citizen == 'male') { %>                  
+                    <option value="indian" checked>Indian</option>
+                    <option value="Nonindian">Non Indian</option>
+                <% } else { %>
+                    <option value="indian">Indian</option>
+                    <option value="Nonindian" checked>Non Indian</option>
+                <% } %>
+                </select>
+            </div>
+           
+            <div class="form-group">
+                <% if(data.image.length>=1) {  %>     
+                <label>Images: <%= data.image.length %> File(s)</label> <a href="/imgview/<%= data._id %>/2" class="btn btn-info" title="View">view Images</a></td>
+                <% } else { %>
+                <label>No Images Added</label>
+                <% } %> 
+            </div>
+           
+            <div class="form-group">
+                <label>Add New Image(s)</label>
+                <input type="file" name="image" id="image" class="form-control" multiple>
+            </div>
+
+
+           
+            <div class="form-group">                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Enter</button>
+            </div>
+        </form>
+    </div>
+
+    <%- include('../layouts/footer') %>

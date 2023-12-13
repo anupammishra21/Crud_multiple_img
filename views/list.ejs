@@ -1,0 +1,41 @@
+<%- include('../layouts/header') %>
+
+<div class="container">
+    <div class="heading">All Profiles List</div>
+    <a href="/add" class="btn btn-info">New Add</a>
+    <table class="table table-striped table-bordered">
+        <thead>
+          <tr style="background-color:darkgray">
+            <!-- <th scope="col">Images</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Hobby</th>
+            <th scope="col">Citizen</th>
+            <th colspan="2">Action</th>
+          </tr>
+          <% allData.map(data => { %>
+            <tr>
+              <!-- <td><%=  data.image %> </td> -->
+              <td><%=  data.name %> </td>
+              <td><%=  data.gender %> </td>
+              <td><%=  data.email %> </td>
+              <td><%=  data.address %> </td>
+              <td><%=  data.hobby %> </td>
+              <td><%=  data.citizen %> </td>
+              <td><a href="/edit/<%= data._id %>" class="btn btn-success" title="Edit">Edit</a>
+                  <a href="/delete/<%= data._id %>" class="btn btn-danger" title="Delete">Delete</a> 
+                  <% if(data.image.length>=1){  %>     
+                  <a href="/imgview/<%= data._id %>/1" class="btn btn-info" title="View">View</a></td>
+                  <% } %>
+            </tr>
+          <% }) %>
+        </thead>
+        </tbody>
+      </table>
+</div>
+
+
+
+<%- include('../layouts/footer') %>

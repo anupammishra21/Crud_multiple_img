@@ -1,0 +1,48 @@
+<%- include('../layouts/header') %>
+
+    <div class="container cssCal" >
+        <div class="heading">FILLUP THIS FORM</div>
+         <form method="post" action="/insert" enctype="multipart/form-data"> <!--  -->
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+            </div>
+            <div class="form-group">
+                <label>Gender</label><br>
+                <label><input type="radio" name="gender" value="male" checked> Male</label><br>
+                <label><input type="radio" name="gender" value="female"> Female</label><br>                
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com" name="email">
+            </div> 
+            <div class="form-group">
+                <label>Address</label>
+                <textarea class="form-control" id="address" rows="3" placeholder="Locality/City/state" name="address"></textarea>
+            </div>           
+            <div class="form-group">
+                <label>Interest/Hobby</label><br>
+                <label><input type="checkbox" name="hobby" value="sports" checked> Sports</label><br>
+                <label><input type="checkbox" name="hobby" value="music"> Music</label><br>
+                <label><input type="checkbox" name="hobby" value="travel"> Travel</label><br>
+                <label><input type="checkbox" name="hobby" value="sleep"> Sleep</label>
+            </div>
+            <div class="form-group">
+                <label>Citizen</label>
+                <select class="form-control" id="citizen" name="citizen">                    
+                    <option value="indian" selected>Indian</option>
+                    <option value="Nonindian">Non Indian</option>
+                </select>
+            </div>
+           
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" name="image" id="image" class="form-control" multiple >
+            </div>
+            <div class="form-group">                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Enter</button>
+            </div>
+        </form>
+    </div>
+
+    <%- include('../layouts/footer') %>

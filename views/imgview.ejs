@@ -1,0 +1,40 @@
+<%- include('../layouts/header') %>
+
+    <div class="container cssCal" >
+        <div class="heading">Profile Image(s)</div>
+        <div class="form-group text-right"> 
+            <% if(pageNo==1) { %>               
+            <a href="/" class="btn btn-info">Back</a>  
+            <% } else { %>
+            <a href="/edit/<%= img_details._id %>" class="btn btn-info">Back</a>
+            <% } %>    
+        </div>
+        
+         <form method="post"> <!-- action="/imgDelete" -->         
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" value="<%= img_details.name %>" readonly>
+                <input type="hidden" id="id" name="id" value="<%= img_details._id %>" >
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" value="<%= img_details.email %>" readonly>
+            </div>
+            <div class="form-group text-center">                               
+                <table>                    
+                    <label>Existing Images</label> 
+                    <% for (let i = 0; i < img_details.image.length; i++ ){  %>
+                    <tr>                        
+                        <td><img src="/uploads/<%= img_details.image[i] %>" width="150px" height="150px" style="border:2px solid black"></td> 
+                        <td><a href="/imgDelete/<%= img_details._id %>/<%= img_details.image[i] %>" class="btn btn-danger" title="Delete">Remove</a></td>                        
+                    <tr>                        
+                    <% } %>                     
+                </table>             
+            </div>
+            <div class="form-group text-cente">                
+                
+            </div>
+        </form>
+    </div>
+
+    <%- include('../layouts/footer') %>
